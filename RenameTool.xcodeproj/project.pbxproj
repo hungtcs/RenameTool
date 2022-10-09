@@ -11,6 +11,8 @@
 		03B318C228F1339D006F6784 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B318C128F1339D006F6784 /* ContentView.swift */; };
 		03B318C428F1339E006F6784 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03B318C328F1339E006F6784 /* Assets.xcassets */; };
 		03B318C728F1339E006F6784 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03B318C628F1339E006F6784 /* Preview Assets.xcassets */; };
+		03B318D028F1516F006F6784 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B318CF28F1516F006F6784 /* BlurView.swift */; };
+		03B318D228F152FC006F6784 /* ReplaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B318D128F152FC006F6784 /* ReplaceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		03B318C328F1339E006F6784 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03B318C628F1339E006F6784 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		03B318C828F1339E006F6784 /* RenameTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RenameTool.entitlements; sourceTree = "<group>"; };
+		03B318CF28F1516F006F6784 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		03B318D128F152FC006F6784 /* ReplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,11 +56,11 @@
 		03B318BE28F1339D006F6784 /* RenameTool */ = {
 			isa = PBXGroup;
 			children = (
-				03B318BF28F1339D006F6784 /* RenameToolApp.swift */,
-				03B318C128F1339D006F6784 /* ContentView.swift */,
-				03B318C328F1339E006F6784 /* Assets.xcassets */,
 				03B318C828F1339E006F6784 /* RenameTool.entitlements */,
+				03B318BF28F1339D006F6784 /* RenameToolApp.swift */,
+				03B318C328F1339E006F6784 /* Assets.xcassets */,
 				03B318C528F1339E006F6784 /* Preview Content */,
+				03B318CE28F14D8B006F6784 /* Views */,
 			);
 			path = RenameTool;
 			sourceTree = "<group>";
@@ -67,6 +71,16 @@
 				03B318C628F1339E006F6784 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		03B318CE28F14D8B006F6784 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				03B318C128F1339D006F6784 /* ContentView.swift */,
+				03B318CF28F1516F006F6784 /* BlurView.swift */,
+				03B318D128F152FC006F6784 /* ReplaceView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +155,8 @@
 			files = (
 				03B318C228F1339D006F6784 /* ContentView.swift in Sources */,
 				03B318C028F1339D006F6784 /* RenameToolApp.swift in Sources */,
+				03B318D028F1516F006F6784 /* BlurView.swift in Sources */,
+				03B318D228F152FC006F6784 /* ReplaceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +282,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RenameTool/RenameTool.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -274,6 +291,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Rename Toolw";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -293,6 +312,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RenameTool/RenameTool.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -301,6 +321,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Rename Toolw";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
