@@ -12,6 +12,9 @@ struct RenameToolApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+                    NSWindow.allowsAutomaticWindowTabbing = false
+                }
         }
         .windowStyle(HiddenTitleBarWindowStyle())
     }

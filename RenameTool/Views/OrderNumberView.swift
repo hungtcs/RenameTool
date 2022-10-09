@@ -1,5 +1,5 @@
 //
-//  ReplaceView.swift
+//  OrderNumberView.swift
 //  RenameTool
 //
 //  Created by 鸿则 on 2022/10/9.
@@ -7,27 +7,41 @@
 
 import SwiftUI
 
-struct ReplaceView: View {
-    @State private var findValue: String = ""
+struct OrderNumberView: View {
     @State private var applyError: Error?
-    @State private var replaceWithValue: String = ""
+    @State private var formatValue = "%02d - "
+    @State private var position = "before"
+    @State private var startWithZero = false
     @EnvironmentObject private var openedFiles: OpenedFiles
     
     private let fileManager = FileManager.default
-
+    
     var body: some View {
         Form {
             HStack {
-                TextField("查找: ", text: $findValue)
-                    .onChange(of: findValue) { _ in
-                        onValueChange()
-                    }
+                TextField(text: $formatValue, label: {
+                    Text("格式:")
+                })
+                .onChange(of: formatValue) { _ in
+                    onValueChange()
+                }
             }
             HStack {
-                TextField("替换: ", text: $replaceWithValue)
-                    .onChange(of: replaceWithValue) { _ in
-                        onValueChange()
-                    }
+                Picker(selection: $position, label: Text("位置:")) {
+                    Text("之前").tag("before")
+                    Text("之后").tag("after")
+                }
+                .onChange(of: position) { _ in
+                    onValueChange()
+                }
+            }
+            HStack {
+                Toggle(isOn: $startWithZero) {
+                    Text("从零开始")
+                }
+                .onChange(of: startWithZero) { _ in
+                    onValueChange()
+                }
             }
             
             HStack {
@@ -45,11 +59,11 @@ struct ReplaceView: View {
                             dump(error)
                         }
                     }
-                    
                 } label: {
                     Text("应用")
                 }
             }
+            
             Spacer()
         }
         .onAppear(perform: {
@@ -92,25 +106,29 @@ struct ReplaceView: View {
     private func getNewFileName(url: URL) -> String {
         let fileName = url.lastPathComponent
         
-        guard let regexp = try? NSRegularExpression(pattern: findValue) else {
-            return fileName
+        var index = openedFiles.fileURLs.firstIndex(of: url)!
+        
+        if !startWithZero {
+            index += 1
         }
-               
-        let newFileName = regexp.stringByReplacingMatches(
-            in: fileName,
-            range: NSRange(
-                location: 0,
-                length: fileName.count
-            ),
-            withTemplate: replaceWithValue
-        )
-        return newFileName
+        
+        switch position {
+            case "before": do {
+                return "\(String(format: formatValue, index))\(fileName)"
+            }
+            case "after": do {
+                return "\(fileName)\(String(format: formatValue, index))"
+            }
+            default:
+                return fileName
+        }
+        
+        
     }
 }
 
-
-struct ReplaceView_Previews: PreviewProvider {
+struct OrderNumberView_Previews: PreviewProvider {
     static var previews: some View {
-        ReplaceView()
+        OrderNumberView()
     }
 }
