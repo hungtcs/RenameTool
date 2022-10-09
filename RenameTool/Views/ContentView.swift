@@ -34,6 +34,7 @@ struct ContentView: View {
                     
                     do {
                         try fileManager.moveItem(at: url, to: newURL)
+                        openedFiles[index] = newURL
                     } catch let error {
                         dump(error)
                     }
